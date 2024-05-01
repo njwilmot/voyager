@@ -1,0 +1,53 @@
+/* Header.css */
+.header {
+    background-color: #800020; /* Dark blue, adjust the color to match your theme */
+    color: white;
+    padding: 20px 40px; /* Adjust padding to better fit your design */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px; /* Adjust based on your logo's design */
+}
+
+.navigation {
+    display: flex;
+    gap: 20px; /* Spacing between navigation links */
+}
+
+.navigation a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.search-bar {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.search-bar input {
+    width: 300px; /* Adjust based on your preference */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    padding: 10px 20px;
+    background-color: #f8d801; /* Yellow button, adjust as needed */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.search-bar button:hover {
+    opacity: 0.9;
+}

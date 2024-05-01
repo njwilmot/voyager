@@ -1,38 +1,35 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header {
+  background-color: #800020;  /* Maroon background to match your logo */
   color: white;
+  padding: 10px 20px; /* Increased padding */
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: space-between; /* Space between logo and title */
+  font-size: 24px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.header img {
+  height: 50px; /* Adjust size as necessary */
+  margin-right: 20px; /* Space between logo and text */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.container {
+  display: flex;
+  height: 90vh; /* Full height minus header */
+}
+
+.mapView, .listView {
+  flex: 1;
+  overflow: hidden; /* No overflow */
+}
+
+.listView {
+  background-color: #f0f0f0; /* Light grey background for contrast */
+  padding: 20px; /* Padding for spacing */
+  overflow-y: auto; /* Enable scrolling on Y axis */
+}
+
+.mapView {
+  overflow: hidden; /* Ensure no scroll bars appear */
 }
