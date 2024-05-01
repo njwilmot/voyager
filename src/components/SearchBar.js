@@ -1,9 +1,13 @@
 import React from 'react';
+import './SearchBar.css';  // Ensure you have created this CSS file.
 
 function SearchBar() {
-    return (
-        <input type="text" placeholder="Search for jobs..." />
-    );
+  return (
+    <div className="search-bar-container">
+      <input type="text" placeholder="Job title, keywords, or company, city, state, or zip code" />
+      <button type="button">Search</button>
+    </div>
+  );
 }
 
-export default SearchBar; // Correctly export SearchBar
+export default SearchBar;

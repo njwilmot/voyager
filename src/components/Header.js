@@ -15,10 +15,6 @@ function Header() {
                 <Link to="/about-us">About Us</Link>
                 <Link to="/contact">Contact</Link>
             </div>
-            <div className="search-bar">
-                <input type="text" placeholder="Search jobs or locations" />
-                <button type="button">Search</button>
-            </div>
         </header>
     );
 }

@@ -5,7 +5,7 @@
   display: flex;
   align-items: center; /* Vertically center the content */
   justify-content: space-between; /* Space between logo and title */
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
 }
 
@@ -33,3 +33,4 @@
 .mapView {
   overflow: hidden; /* Ensure no scroll bars appear */
 }
+

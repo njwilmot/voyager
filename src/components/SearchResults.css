@@ -1,0 +1,13 @@
+.search-results {
+    display: flex;
+    height: 100vh;
+}
+
+.map {
+    width: 50%;
+}
+
+.job-listings {
+    width: 50%;
+    overflow-y: scroll;
+}

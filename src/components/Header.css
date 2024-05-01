@@ -26,28 +26,3 @@
     font-weight: bold;
 }
 
-.search-bar {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.search-bar input {
-    width: 300px; /* Adjust based on your preference */
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.search-bar button {
-    padding: 10px 20px;
-    background-color: #f8d801; /* Yellow button, adjust as needed */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-bar button:hover {
-    opacity: 0.9;
-}
