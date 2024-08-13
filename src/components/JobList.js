@@ -11,7 +11,7 @@ function JobList() {
     ];
 
     return (
-        <div className="job-list">
+        <div className="jobs">
             {jobs.map(job => (
                 <div key={job.id} className="job">
                     <h3>{job.title}</h3>

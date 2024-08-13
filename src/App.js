@@ -5,15 +5,16 @@ import SearchBar from './components/SearchBar';  // Make sure to import the Sear
 import JobList from './components/JobList';
 import JobMap from './components/JobMap';
 import './App.css';
+import JobDetails from './components/JobDetails';
 
 function App() {
   return (
     <div>
       <Router>
         <Header />
-        <SearchBar />  {/* Add the SearchBar component here */}
         <Routes>
-          <Route path="/" element={<JobList />} />
+        <Route path="/" element={<SearchBar />} />
+          <Route path="/jobs" element={<JobList />} />
           <Route path="/map" element={<JobMap />} />
         </Routes>
       </Router>

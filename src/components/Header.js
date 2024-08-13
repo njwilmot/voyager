@@ -12,8 +12,7 @@ function Header() {
             </div>
             <div className="navigation">
                 <Link to="/jobs">Jobs</Link>
-                <Link to="/about-us">About Us</Link>
-                <Link to="/contact">Contact</Link>
+                <Link to="/map">Maps</Link>
             </div>
         </header>
     );
