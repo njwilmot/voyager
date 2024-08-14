@@ -1,24 +1,25 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import SearchBar from './components/SearchBar';  // Make sure to import the SearchBar
+import HomePage from './components/HomePage';  // We'll create this
 import JobList from './components/JobList';
 import JobMap from './components/JobMap';
-import './App.css';
 import JobDetails from './components/JobDetails';
+import './App.css';
 
 function App() {
   return (
-    <div>
-      <Router>
+    <Router>
+      <div className="app-container">
         <Header />
         <Routes>
-        <Route path="/" element={<SearchBar />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/jobs" element={<JobList />} />
           <Route path="/map" element={<JobMap />} />
+          <Route path="/jobs/:jobId" element={<JobDetails />} />
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
