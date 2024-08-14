@@ -1,13 +1,19 @@
+/* SearchResults.css */
 .search-results {
-    display: flex;
-    height: 100vh;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
 }
 
-.map {
-    width: 50%;
+.job-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
 }
 
-.job-listings {
-    width: 50%;
-    overflow-y: scroll;
+.job-item h3 {
+  margin: 0;
+  color: #800020;
+}
+
+.job-item p {
+  margin: 5px 0;
 }
