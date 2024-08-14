@@ -1,18 +1,20 @@
+// SearchResults.js
 import React from 'react';
-import Map from './Map'; // Assuming you have a Map component
-import JobListing from './JobListing'; // Component to display job listings
+import './SearchResults.css';
 
-function SearchResults({ jobs, location }) {
-    return (
-        <div className="search-results">
-            <Map location={location} jobs={jobs} />
-            <div className="job-listings">
-                {jobs.map(job => (
-                    <JobListing key={job.id} job={job} />
-                ))}
-            </div>
+function SearchResults({ results }) {
+  return (
+    <div className="search-results">
+      <h2>Search Results</h2>
+      {results.map((job, index) => (
+        <div key={index} className="job-item">
+          <h3>{job.title}</h3>
+          <p>{job.company}</p>
+          <p>{job.location}</p>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
 
 export default SearchResults;
