@@ -1,32 +1,56 @@
 .job-map-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
-    padding-top: 20px; /* Adjust the padding as needed */
-    box-sizing: border-box;
 }
 
 .search-bar {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1000;
+    padding: 10px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input, .search-bar select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
 }
 
 .search-bar input {
-    padding: 8px;
-    font-size: 14px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 40%;
 }
 
-.map-container {
-    width: 80%;
-    height: 60vh; /* Adjust the height of the map */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
+.map-and-listings {
+    display: flex;
+    flex-grow: 1;
+}
+
+.job-listing-panel {
+    width: 30%;
+    background: #f8f8f8;
+    padding: 20px;
+    overflow-y: scroll;
+}
+
+.job-item {
+    padding: 15px;
+    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.job-item:hover {
+    background-color: #f0f0f0;
+}
+
+.job-item h4 {
+    margin: 0;
+    color: #333;
 }

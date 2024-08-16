@@ -2,7 +2,7 @@
 .header {
     background-color: #800020; /* Dark blue, adjust the color to match your theme */
     color: white;
-    padding: 20px 40px; /* Adjust padding to better fit your design */
+    padding: 20px 30px; /* Adjust padding to better fit your design */
 }
 
 .header-content {
@@ -11,18 +11,22 @@
     align-items: center;
 }
 
-.logo img {
-    height: 50px; /* Adjust based on your logo's design */
+.home {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: medium;
 }
 
 .navigation {
     display: flex;
-    gap: 20px; /* Spacing between navigation links */
+    gap: 17px; /* Spacing between navigation links */
 }
 
 .navigation a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    font-size: medium;
 }
 
