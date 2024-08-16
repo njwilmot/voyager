@@ -11,6 +11,7 @@ function SearchBar({ onSearch, isSmall }) {
 
   return (
     <div className={`search-bar-container ${isSmall ? 'small' : ''}`}>
+
       <input
         type="text"
         value={searchTerm}

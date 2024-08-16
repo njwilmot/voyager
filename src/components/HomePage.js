@@ -21,6 +21,7 @@ function HomePage() {
 
   return (
     <div className={`home-page ${hasSearched ? 'searched' : ''}`}>
+
       {!hasSearched && <h1>Find Your Next Career Opportunity</h1>}
       <div className="content-wrapper">
         <div className="main-content">

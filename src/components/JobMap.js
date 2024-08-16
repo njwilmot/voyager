@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-import './JobMap.css'; // Make sure to create and link this CSS file
+import React, { useEffect, useState, useCallback } from 'react';
+import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
+import './JobMap.css';
 
 const mapContainerStyle = {
   width: '100%',
@@ -8,12 +8,12 @@ const mapContainerStyle = {
 };
 
 const center = {
-    lat: 33.4484,
-    lng: -112.0740,
-  };  
-  
+  lat: 33.4484,
+  lng: -112.0740,
+};
+
 const mapOptions = {
-  gestureHandling: 'greedy', // Allows zooming with the scroll wheel without holding Ctrl
+  gestureHandling: 'greedy',
 };
 
 function JobMap() {
@@ -24,7 +24,7 @@ function JobMap() {
   const [location, setLocation] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
 
-  useEffect(() => {
+  const loadMarkers = useCallback(() => {
     const initialMarkers = [
       { id: 1, position: { lat: 51.5074, lng: -0.1278 }, title: 'Software Engineer', description: 'Tech Company in London', type: 'Tech', location: 'London', experience: 'Mid' },
       { id: 2, position: { lat: 51.5155, lng: -0.0922 }, title: 'Data Scientist', description: 'Financial Institution', type: 'Finance', location: 'London', experience: 'Senior' },
@@ -32,6 +32,16 @@ function JobMap() {
     ];
     setMarkers(initialMarkers);
   }, []);
+
+  useEffect(() => {
+    if (markers.length === 0) {
+      loadMarkers();
+    }
+
+    return () => {
+      console.log("Cleanup on unmount");
+    };
+  }, [loadMarkers, markers.length]);
 
   const filteredMarkers = markers.filter(marker => 
     (marker.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -75,86 +85,84 @@ function JobMap() {
   };
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyCkN2fLQ3yPYQxed5TxXjoz8GECCf9tnIQ">
-      <div className="job-map-container">
-        <div className="search-bar">
-          <input 
-            type="text" 
-            placeholder="Search jobs by title or description..." 
-            value={searchTerm} 
-            onChange={handleSearch} 
-          />
-          <select value={jobType} onChange={handleJobTypeChange}>
-            <option value="">All Job Types</option>
-            <option value="Tech">Tech</option>
-            <option value="Finance">Finance</option>
-            <option value="Construction">Construction</option>
-          </select>
-          <select value={location} onChange={handleLocationChange}>
-            <option value="">All Locations</option>
-            <option value="London">London</option>
-            <option value="New York">New York</option>
-            <option value="San Francisco">San Francisco</option>
-          </select>
-          <select value={experienceLevel} onChange={handleExperienceLevelChange}>
-            <option value="">All Experience Levels</option>
-            <option value="Junior">Junior</option>
-            <option value="Mid">Mid</option>
-            <option value="Senior">Senior</option>
-          </select>
-        </div>
-        <div className="map-and-listings">
-          <GoogleMap
-            mapContainerStyle={mapContainerStyle}
-            center={center}
-            zoom={13}
-            options={mapOptions}
-            onClick={addMarker}
-          >
-            {filteredMarkers.map(marker => (
-              <Marker
-                key={marker.id}
-                position={marker.position}
-                onClick={() => handleMarkerClick(marker)}
-              />
-            ))}
+    <div className="job-map-container">
+      <div className="search-bar">
+        <input 
+          type="text" 
+          placeholder="Search jobs by title or description..." 
+          value={searchTerm} 
+          onChange={handleSearch} 
+        />
+        <select value={jobType} onChange={handleJobTypeChange}>
+          <option value="">All Job Types</option>
+          <option value="Tech">Tech</option>
+          <option value="Finance">Finance</option>
+          <option value="Construction">Construction</option>
+        </select>
+        <select value={location} onChange={handleLocationChange}>
+          <option value="">All Locations</option>
+          <option value="London">London</option>
+          <option value="New York">New York</option>
+          <option value="San Francisco">San Francisco</option>
+        </select>
+        <select value={experienceLevel} onChange={handleExperienceLevelChange}>
+          <option value="">All Experience Levels</option>
+          <option value="Junior">Junior</option>
+          <option value="Mid">Mid</option>
+          <option value="Senior">Senior</option>
+        </select>
+      </div>
+      <div className="map-and-listings">
+        <GoogleMap
+          mapContainerStyle={mapContainerStyle}
+          center={center}
+          zoom={13}
+          options={mapOptions}
+          onClick={addMarker}
+        >
+          {filteredMarkers.map(marker => (
+            <Marker
+              key={marker.id}
+              position={marker.position}
+              onClick={() => handleMarkerClick(marker)}
+            />
+          ))}
 
-            {selectedJob && (
-              <InfoWindow
-                position={selectedJob.position}
-                onCloseClick={() => setSelectedJob(null)}
+          {selectedJob && (
+            <InfoWindow
+              position={selectedJob.position}
+              onCloseClick={() => setSelectedJob(null)}
+            >
+              <div>
+                <strong>{selectedJob.title}</strong>
+                <p>{selectedJob.description}</p>
+                <p>Type: {selectedJob.type}</p>
+                <p>Location: {selectedJob.location}</p>
+                <p>Experience Level: {selectedJob.experience}</p>
+              </div>
+            </InfoWindow>
+          )}
+        </GoogleMap>
+
+        <div className="job-listing-panel">
+          <h3>Job Listings</h3>
+          {filteredMarkers.length > 0 ? (
+            filteredMarkers.map(marker => (
+              <div 
+                key={marker.id} 
+                className="job-item"
+                onClick={() => setSelectedJob(marker)}
               >
-                <div>
-                  <strong>{selectedJob.title}</strong>
-                  <p>{selectedJob.description}</p>
-                  <p>Type: {selectedJob.type}</p>
-                  <p>Location: {selectedJob.location}</p>
-                  <p>Experience Level: {selectedJob.experience}</p>
-                </div>
-              </InfoWindow>
-            )}
-          </GoogleMap>
-
-          <div className="job-listing-panel">
-            <h3>Job Listings</h3>
-            {filteredMarkers.length > 0 ? (
-              filteredMarkers.map(marker => (
-                <div 
-                  key={marker.id} 
-                  className="job-item"
-                  onClick={() => setSelectedJob(marker)}
-                >
-                  <h4>{marker.title}</h4>
-                  <p>{marker.description}</p>
-                </div>
-              ))
-            ) : (
-              <p>No jobs match your search criteria.</p>
-            )}
-          </div>
+                <h4>{marker.title}</h4>
+                <p>{marker.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>No jobs match your search criteria.</p>
+          )}
         </div>
       </div>
-    </LoadScript>
+    </div>
   );
 }
 
