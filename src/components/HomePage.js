@@ -1,43 +1,38 @@
-// HomePage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
 import './HomePage.css';
+import Trending from './Trending';
 
 function HomePage() {
   const [hasSearched, setHasSearched] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
+  const navigate = useNavigate();
 
-  const handleSearch = (searchTerm) => {
-    // In a real app, you'd fetch results from an API here
-    const mockResults = [
-      { title: "Software Engineer", company: "Tech Co", location: "San Francisco, CA" },
-      { title: "Data Analyst", company: "Data Corp", location: "New York, NY" },
-      // Add more mock results as needed
-    ];
-    setSearchResults(mockResults);
+  const handleSearch = (term) => {
     setHasSearched(true);
+    navigate(`/jobs?search=${encodeURIComponent(term)}`); // Navigate to map with search term
   };
 
-  return (
-    <div className={`home-page ${hasSearched ? 'searched' : ''}`}>
+  useEffect(() => {
+    const initialResults = [
+      { title: "Software Engineer", company: "Tech Co", location: "San Francisco, CA", price: "$120,000/year" },
+      { title: "Data Analyst", company: "Data Corp", location: "New York, NY", price: "$95,000/year" },
+      { title: "Product Manager", company: "Retail Inc", location: "Los Angeles, CA", price: "$130,000/year" },
+      { title: "Graphic Designer", company: "Design Studio", location: "Chicago, IL", price: "$85,000/year" },
+      { title: "Sales Associate", company: "SalesForce", location: "Miami, FL", price: "$75,000/year" },
+    ];
+    setSearchResults(initialResults);
+  }, []);
 
-      {!hasSearched && <h1>Find Your Next Career Opportunity</h1>}
+  return (
+    <div className="home-page">
+      <h1>Find Your Next Career Opportunity</h1>
       <div className="content-wrapper">
-        <div className="main-content">
-          <SearchBar onSearch={handleSearch} isSmall={hasSearched} />
-          {!hasSearched && (
-            <section className="trending-jobs">
-              <h2>Trending Jobs</h2>
-              {/* Add trending jobs content here */}
-            </section>
-          )}
-        </div>
-        {hasSearched && (
-          <div className="results-sidebar">
-            <SearchResults results={searchResults} />
-          </div>
-        )}
+        <SearchBar onSearch={handleSearch} /> {/* Pass the handleSearch function */}
+        <section className="trending-jobs">
+          <Trending />
+        </section>
       </div>
     </div>
   );

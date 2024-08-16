@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function JobData(){
+function JobMarket(){
 
 }
 
-export default JobData;
+export default JobMarket;

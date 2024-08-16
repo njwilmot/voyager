@@ -1,51 +1,17 @@
-/* src/components/HomePage.css */
 .home-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-    color: #800020;
-    font-size: x-large;
-  }
-  
-  .trending-jobs {
-    margin-top: 40px;
-  }
-  
-  .job-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .job-card {
-    width: calc(33% - 20px);
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .job-card h3 {
-    margin-top: 0;
-    color: #800020;
-  }
-  
-  .view-options {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .view-button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #800020;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-  }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 20px; /* Remove or reduce padding here */
+}
+
+h1 {
+  text-align: center;
+  color: #800020;
+  font-size: x-large;
+  margin-bottom: 10px; /* Reduce space below the title */
+}
+
+.trending-jobs {
+  margin-top: 0px; /* Remove extra space above the trending jobs */
+  padding-top: 0px; /* Remove padding if any */
+}

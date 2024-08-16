@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useLocation } from 'react-router-dom';
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 import './JobMap.css';
 
@@ -17,17 +18,21 @@ const mapOptions = {
 };
 
 function JobMap() {
+  const locationHook = useLocation();
+  const queryParams = new URLSearchParams(locationHook.search);
+  const searchTermFromQuery = queryParams.get('search');
+
   const [markers, setMarkers] = useState([]);
   const [selectedJob, setSelectedJob] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(searchTermFromQuery || "");
   const [jobType, setJobType] = useState("");
   const [location, setLocation] = useState("");
   const [experienceLevel, setExperienceLevel] = useState("");
 
   const loadMarkers = useCallback(() => {
     const initialMarkers = [
-      { id: 1, position: { lat: 51.5074, lng: -0.1278 }, title: 'Software Engineer', description: 'Tech Company in London', type: 'Tech', location: 'London', experience: 'Mid' },
-      { id: 2, position: { lat: 51.5155, lng: -0.0922 }, title: 'Data Scientist', description: 'Financial Institution', type: 'Finance', location: 'London', experience: 'Senior' },
+      { id: 1, position: { lat: 40.8074, lng: -74.1278 }, title: 'Software Engineer', description: 'Tech Company', type: 'Tech', location: 'New York', experience: 'Mid' },
+      { id: 2, position: { lat: 33.4484,lng: -112.0740,}, title: 'Data Scientist', description: 'Financial Institution', type: 'Finance', location: 'Phoenix', experience: 'Senior' },
       { id: 3, position: { lat: 51.5096, lng: -0.1182 }, title: 'Project Manager', description: 'Construction Firm', type: 'Construction', location: 'London', experience: 'Junior' },
     ];
     setMarkers(initialMarkers);
@@ -37,10 +42,6 @@ function JobMap() {
     if (markers.length === 0) {
       loadMarkers();
     }
-
-    return () => {
-      console.log("Cleanup on unmount");
-    };
   }, [loadMarkers, markers.length]);
 
   const filteredMarkers = markers.filter(marker => 
@@ -69,19 +70,6 @@ function JobMap() {
 
   const handleMarkerClick = (marker) => {
     setSelectedJob(marker);
-  };
-
-  const addMarker = (e) => {
-    const newMarker = {
-      id: markers.length + 1,
-      position: { lat: e.latLng.lat(), lng: e.latLng.lng() },
-      title: `Job ${markers.length + 1}`,
-      description: `This is a detailed description of job ${markers.length + 1}.`,
-      type: 'Unknown',
-      location: 'Unknown',
-      experience: 'Unknown',
-    };
-    setMarkers([...markers, newMarker]);
   };
 
   return (
@@ -118,7 +106,6 @@ function JobMap() {
           center={center}
           zoom={13}
           options={mapOptions}
-          onClick={addMarker}
         >
           {filteredMarkers.map(marker => (
             <Marker
@@ -158,7 +145,10 @@ function JobMap() {
               </div>
             ))
           ) : (
-            <p>No jobs match your search criteria.</p>
+            <div>
+              <h3>Recommended Jobs</h3>
+              {/* Add your recommended jobs here */}
+            </div>
           )}
         </div>
       </div>

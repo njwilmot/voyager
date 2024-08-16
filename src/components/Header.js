@@ -7,11 +7,11 @@ function Header() {
         <header className="header">
             <div className="navigation">
                 <Link to="/">Home</Link>
+                <Link to="/jobs">Maps</Link>
             </div>
             <div className="navigation">
-                <Link to="/jobs">Jobs</Link>
-                <Link to="/map">Maps</Link>
-                <Link to="/data">Data</Link>
+                <Link to="/market">Market</Link>
+                <Link to="/reviews">Reviews</Link>
                 <Link to="/profile">Profile</Link>
             </div>
         </header>

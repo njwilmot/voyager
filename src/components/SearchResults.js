@@ -1,4 +1,3 @@
-// SearchResults.js
 import React from 'react';
 import './SearchResults.css';
 
@@ -6,11 +5,11 @@ function SearchResults({ results }) {
   return (
     <div className="search-results">
       <h2>Search Results</h2>
-      {results.map((job, index) => (
-        <div key={index} className="job-item">
-          <h3>{job.title}</h3>
-          <p>{job.company}</p>
-          <p>{job.location}</p>
+      {results.map((result, index) => (
+        <div key={index} className="result-item">
+          <h3>{result.title}</h3>
+          <p>{result.company}</p>
+          <p>{result.location}</p>
         </div>
       ))}
     </div>

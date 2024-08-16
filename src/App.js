@@ -6,7 +6,7 @@ import HomePage from './components/HomePage';
 import JobList from './components/JobList';
 import JobMap from './components/JobMap';
 import JobDetails from './components/JobDetails';
-import JobData from './components/JobData';
+import JobMarket from './components/JobMarket';
 import Profile from './components/Profile';
 import './App.css';
 
@@ -22,9 +22,8 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/jobs" element={<JobList />} />
-            <Route path="/map" element={<JobMap />} />
-            <Route path="/data" element={<JobData />} />
+            <Route path="/jobs" element={<JobMap />} />
+            <Route path="/market" element={<JobMarket />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/jobs/:jobId" element={<JobDetails />} />
           </Routes>
