@@ -27,7 +27,6 @@ function HomePage() {
 
   return (
     <div className="home-page">
-      <h1>Find Your Next Career Opportunity</h1>
       <div className="content-wrapper">
         <SearchBar onSearch={handleSearch} /> {/* Pass the handleSearch function */}
         <section className="trending-jobs">

@@ -1,15 +1,15 @@
 .trending-container {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 10px 20px;
+    padding: 20px 0px;
     position: relative;
   }
   
   .trending-container h2 {
     text-align: left;
-    color: #800020;
+    color: #ffffff;
     font-size: large;
-    margin-bottom: 15px;
+    margin-bottom: 40px;
   }
   
   .scroll-buttons {
@@ -51,16 +51,27 @@
   
   .trending-job-card {
     flex: 0 0 auto;
-    width: 300px;
+    width: 250px;
+    height: 220px;
     border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
+    border-radius: 7px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    background-color: #fff;
     overflow: hidden;
+    transition: transform 0.3s ease; 
+}
+
+
+  .trending-job-list {
+      display: flex;
+      overflow-x: auto; 
+      padding-bottom: 10px;
+      gap: 17px; 
   }
+
   
   .job-image {
-    height: 150px;
+    height: 120px;
     background-color: #e0e0e0;
     display: flex;
     justify-content: center;
@@ -69,9 +80,8 @@
   }
   
   .job-image img {
-    max-width: 100%;
-    max-height: 100%;
     object-fit: cover;
+    
   }
   
   .job-info {
@@ -80,7 +90,7 @@
   
   .job-info h3 {
     margin: 0 0 10px;
-    color: #800020;
+    color: #121212;
   }
   
   .job-info p {

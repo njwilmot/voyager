@@ -12,7 +12,7 @@ function Trending() {
       { title: "Data Analyst", company: "Data Corp", location: "New York, NY", price: "$95,000/year", image: "/images/job2.png" },
       { title: "Product Manager", company: "Retail Inc", location: "Los Angeles, CA", price: "$130,000/year", image: "/images/job3.png" },
       { title: "Graphic Designer", company: "Design Studio", location: "Chicago, IL", price: "$85,000/year", image: "/images/job4.png" },
-      { title: "Sales Associate", company: "SalesForce", location: "Miami, FL", price: "$75,000/year", image: "/images/job5.png" },
+      { title: "Sales Associate", company: "SalesCom", location: "Miami, FL", price: "$75,000/year", image: "/images/job5.png" },
     ];
     setJobs(jobData);
   }, []);

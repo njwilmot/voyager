@@ -10,7 +10,7 @@ function Header() {
                 <Link to="/jobs">Maps</Link>
             </div>
             <div className="navigation">
-                <Link to="/market">Market</Link>
+                <Link to="/career">Career</Link>
                 <Link to="/reviews">Reviews</Link>
                 <Link to="/profile">Profile</Link>
             </div>

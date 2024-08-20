@@ -28,6 +28,7 @@
 .map-and-listings {
     display: flex;
     flex-grow: 1;
+    color: #333;
 }
 
 .job-listing-panel {
@@ -41,13 +42,13 @@
     padding: 15px;
     background: #fff;
     margin-bottom: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #f8f8f8;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .job-item:hover {
-    background-color: #f0f0f0;
+    background-color: #f8f8f8;
 }
 
 .job-item h4 {
