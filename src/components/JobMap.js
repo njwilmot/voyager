@@ -61,10 +61,36 @@ function JobMap() {
         setMapCenter(filteredMarkers[0].position);
         setSelectedJob(filteredMarkers[0]);
       } else {
+        // No jobs found for the location but change the map to the searched location
+        geocodeLocation(locationFromQuery).then(position => {
+          if (position) {
+            setMapCenter(position);
+          }
+        });
         setSelectedJob(null);
       }
     }
   }, [markers, searchTermFromQuery, locationFromQuery]);
+
+  const geocodeLocation = async (locationName) => {
+    // Replace this with your geocoding service or Google Maps Geocoding API
+    try {
+      const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
+        params: {
+          address: locationName,
+          key: 'AIzaSyCkN2fLQ3yPYQxed5TxXjoz8GECCf9tnIQ',
+        }
+      });
+
+      if (response.data.results && response.data.results.length > 0) {
+        const { lat, lng } = response.data.results[0].geometry.location;
+        return { lat, lng };
+      }
+    } catch (error) {
+      console.error('Geocoding error:', error);
+    }
+    return null;
+  };
 
   const filteredMarkers = markers.filter(marker => 
     (marker.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
@@ -78,33 +104,20 @@ function JobMap() {
     setSearchTerm(e.target.value);
   };
 
-  const executeSearch = async () => {
+  const executeSearch = () => {
     if (filteredMarkers.length > 0) {
-        setMapCenter(filteredMarkers[0].position);
-        setSelectedJob(filteredMarkers[0]);
-    } else if (location) {
-        // If no job markers match, try to find the location using the Google Geocoding API
-        try {
-            const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
-                params: {
-                    address: location,
-                    key: "AIzaSyCkN2fLQ3yPYQxed5TxXjoz8GECCf9tnIQ"
-                }
-            });
-
-            const { data } = response;
-            if (data.results.length > 0) {
-                const { lat, lng } = data.results[0].geometry.location;
-                setMapCenter({ lat, lng });
-            }
-        } catch (error) {
-            console.error('Error fetching location:', error);
+      setMapCenter(filteredMarkers[0].position);
+      setSelectedJob(filteredMarkers[0]);
+    } else {
+      // Handle the case where no markers match but still change the map center
+      geocodeLocation(location).then(position => {
+        if (position) {
+          setMapCenter(position);
         }
-
-        setSelectedJob(null);
+      });
+      setSelectedJob(null);
     }
-};
-
+  };
 
   const handleJobTypeChange = (e) => {
     setJobType(e.target.value);
