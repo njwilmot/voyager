@@ -78,7 +78,7 @@ function JobMap() {
       const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json`, {
         params: {
           address: locationName,
-          key: 'YOUR GOOGLE API KEY',
+          key: 'AIzaSyCkN2fLQ3yPYQxed5TxXjoz8GECCf9tnIQ',
         }
       });
 
