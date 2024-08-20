@@ -6,7 +6,7 @@ import HomePage from './components/HomePage';
 import JobList from './components/JobList';
 import JobMap from './components/JobMap';
 import JobDetails from './components/JobDetails';
-import Career from './components/Career';
+import Research from './components/Research';
 import Profile from './components/Profile';
 import './App.css';
 
@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/jobs" element={<JobMap />} />
-            <Route path="/career" element={<Career />} />
+            <Route path="/research" element={<Research />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/jobs/:jobId" element={<JobDetails />} />
           </Routes>
