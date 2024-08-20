@@ -7,7 +7,9 @@ function Header() {
         <header className="header">
             <div className="navigation">
                 <Link to="/">Home</Link>
-                <Link to="/jobs">Maps</Link>
+                <Link to="/jobs">Office</Link>
+                <Link to="/remote">Remote</Link>
+                <Link to="/internships">Internships</Link>
             </div>
             <div className="navigation">
                 <Link to="/Research">Research</Link>
