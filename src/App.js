@@ -15,7 +15,7 @@ function App() {
 
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyCkN2fLQ3yPYQxed5TxXjoz8GECCf9tnIQ"
+      googleMapsApiKey="YOUR GOOGLE API KEY"
       onLoad={() => console.log("Google Maps script loaded successfully")}
       onError={() => console.error("Error loading Google Maps script")}
     >
