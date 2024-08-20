@@ -8,9 +8,11 @@ import JobMap from './components/JobMap';
 import JobDetails from './components/JobDetails';
 import Research from './components/Research';
 import Profile from './components/Profile';
+import Reviews from './components/Reviews';
 import './App.css';
 
 function App() {
+
   return (
     <LoadScript
       googleMapsApiKey="AIzaSyCkN2fLQ3yPYQxed5TxXjoz8GECCf9tnIQ"
@@ -25,6 +27,7 @@ function App() {
             <Route path="/jobs" element={<JobMap />} />
             <Route path="/research" element={<Research />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/reviews" element={<Reviews />} />
             <Route path="/jobs/:jobId" element={<JobDetails />} />
           </Routes>
         </div>

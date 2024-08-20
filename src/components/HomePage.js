@@ -9,10 +9,11 @@ function HomePage() {
   const [searchResults, setSearchResults] = useState([]);
   const navigate = useNavigate();
 
-  const handleSearch = (term) => {
+  const handleSearch = (term, location) => {
     setHasSearched(true);
-    navigate(`/jobs?search=${encodeURIComponent(term)}`); // Navigate to map with search term
+    navigate(`/jobs?search=${encodeURIComponent(term)}&location=${encodeURIComponent(location)}`); // Pass both search term and location
   };
+  
 
   useEffect(() => {
     const initialResults = [
